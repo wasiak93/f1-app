@@ -1,5 +1,6 @@
 const api = 'http://ergast.com/api/f1'
 const contentEl = document.querySelector('.content')
+const contentInfoNamesArray = ['season', 'round']
 
 const err = (er) => {
   console.log(`dupa ${er}`)
@@ -20,27 +21,26 @@ const fetchApi = (endpoint) => {
 }
 
 
-setContentInfo = (data, name) => {
-  const element = document.createElement('div')
-  element.classList.add(`content__${name}-wrapper`)
-  element.innerHTML = `
-  <p class="content__${name}-text">${name}:</p>
-  <p class="content__${name}-data">${data}</p>`
-  contentEl.appendChild(element)
+setContentInfo = (data, value) => {
+  contentEl.innerHTML += `
+  <div class="content__${value}-wrapper">
+  <p class="content__${value}-text">${value}:</p>
+  <p class="content__${value}-data">${data[value]}</p>
+  </div>`
+
 }
 
-setContent = (data) => {
-  console.log(data)
-  const season = data.season
-  const round = data.round
+setContent = (data) => {  
   const driverStandingsArray = data.DriverStandings
-  console.log(season)
-  console.log(round)
+  console.log(data)
   console.log(driverStandingsArray)
 
-  setContentInfo(round, 'round')
-  setContentInfo(season, 'season')
+  contentEl.innerHTML = ""
+  contentInfoNamesArray.map(value => setContentInfo(data,value))
 }
+
+
+
 
 fetchApi('/current/driverStandings.json')
   .then(data => {
