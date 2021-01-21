@@ -1,5 +1,5 @@
 const api = 'http://ergast.com/api/f1'
-const contentEl = document.querySelector('.content')
+const contentInfoEl = document.querySelector('.content__info')
 const contentInfoNamesArray = ['season', 'round']
 
 const err = (er) => {
@@ -21,11 +21,11 @@ const fetchApi = (endpoint) => {
 }
 
 
-setContentInfo = (data, value) => {
-  contentEl.innerHTML += `
-  <div class="content__${value}-wrapper">
-  <p class="content__${value}-text">${value}:</p>
-  <p class="content__${value}-data">${data[value]}</p>
+setContentInfo = (data, name) => {
+  contentInfoEl.innerHTML += `
+  <div class="content__${name}-wrapper">
+  <p class="content__${name}-text">${name}:</p>
+  <p class="content__${name}-data">${data[name]}</p>
   </div>`
 
 }
@@ -35,8 +35,8 @@ setContent = (data) => {
   console.log(data)
   console.log(driverStandingsArray)
 
-  contentEl.innerHTML = ""
-  contentInfoNamesArray.map(value => setContentInfo(data,value))
+  contentInfoEl.innerHTML = ""
+  contentInfoNamesArray.map(name => setContentInfo(data,name))
 }
 
 
