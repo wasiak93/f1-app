@@ -1,5 +1,6 @@
 const api = 'http://ergast.com/api/f1'
 const contentInfoEl = document.querySelector('.content__info')
+const contentStandingsEl = document.querySelector('.content__standings')
 const contentInfoNamesArray = ['season', 'round']
 
 const err = (er) => {
@@ -30,13 +31,37 @@ setContentInfo = (data, name) => {
 
 }
 
+drawDriversTable = ({Constructors, Driver, points, position, wins }) => {
+  console.log(Driver)
+  console.log(Constructors)
+  
+ 
+  
+  // const constructors = Constructors.map(constructor =>{
+    // <div className="driver__constructors">${constructors}</div>
+  // })
+
+  const driverElement = `
+  <div class="content__driver driver">
+    <div className="driver__position">${position}</div>
+    <div className="driver__name">${Driver.givenName}</div>
+    <div className="driver__surname">${Driver.familyName}</div>
+    <div className="driver__nationality">${Driver.nationality}</div>
+   
+    <div className="driver__points">${points}</div>
+    <div className="drivers__wins">${wins}</div>
+  </div>`
+
+  contentStandingsEl.innerHTML += driverElement
+}
+
 setContent = (data) => {  
-  const driverStandingsArray = data.DriverStandings
-  console.log(data)
-  console.log(driverStandingsArray)
+  const driversStandingsArray = data.DriverStandings
 
   contentInfoEl.innerHTML = ""
   contentInfoNamesArray.map(name => setContentInfo(data,name))
+
+  driversStandingsArray.map(driver => drawDriversTable(driver))
 }
 
 
