@@ -19,22 +19,14 @@ const fetchApi = (endpoint) => {
     .catch(e => err(e))
 }
 
-setSeason = (season) => {
-  const seasonEl = document.createElement('div')
-  seasonEl.classList.add('content__season-wrapper')
-  seasonEl.innerHTML = `
-  <p class="content__season-text">Season:</p>
-  <p class="content__season-data">${season}</p>`
-  contentEl.appendChild(seasonEl)
-}
 
-setRound = (round) => {
-  const roundEl = document.createElement('div')
-  roundEl.classList.add('content__round-wrapper')
-  roundEl.innerHTML = `
-  <p class="content__round-text">Round:</p>
-  <p class="content__round-data">${round}</p>`
-  contentEl.appendChild(roundEl)
+setContentInfo = (data, name) => {
+  const element = document.createElement('div')
+  element.classList.add(`content__${name}-wrapper`)
+  element.innerHTML = `
+  <p class="content__${name}-text">${name}:</p>
+  <p class="content__${name}-data">${data}</p>`
+  contentEl.appendChild(element)
 }
 
 setContent = (data) => {
@@ -46,8 +38,8 @@ setContent = (data) => {
   console.log(round)
   console.log(driverStandingsArray)
 
-  setSeason(season) 
-  setRound(round) 
+  setContentInfo(round, 'round')
+  setContentInfo(season, 'season')
 }
 
 fetchApi('/current/driverStandings.json')
