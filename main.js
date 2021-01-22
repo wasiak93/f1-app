@@ -2,6 +2,7 @@ const api = 'http://ergast.com/api/f1'
 const contentInfoEl = document.querySelector('.content__info')
 const contentStandingsEl = document.querySelector('.content__standings')
 const contentInfoNamesArray = ['season', 'round']
+const menuEl = document.querySelector('.menu')
 
 const err = (er) => {
   console.log(`dupa ${er}`)
@@ -22,6 +23,31 @@ const fetchApi = (endpoint) => {
 }
 
 
+// menu
+const getYears = () => {
+  const actualYear = new Date().getFullYear()
+  const firstYear = 1950
+  const limit =  actualYear - firstYear
+
+  fetchApi(`/seasons.json?limit=${limit}`)
+  .then(data => {
+    if(!data) return;
+    console.log(data)
+  })
+}
+
+// buttonEl.addEventListener("click", (e)=> {
+//   const year = e.target.getAttribute('data-key')
+
+//   {fetchApi(`/${year}/driverStandings.json`)
+//   .then(data => {
+//     if(!data) return;
+//     setContent(data.MRData.StandingsTable.StandingsLists[0])
+//   })}
+// })
+
+
+// content
 setContentInfo = (data, name) => {
   contentInfoEl.innerHTML += `
   <div class="content__${name}-wrapper">
@@ -31,8 +57,7 @@ setContentInfo = (data, name) => {
 
 }
 
-drawDriversTable = (driversArray) => {
-  
+drawDriversTable = (driversArray) => {  
   driversArray.map(({constructors, id, name, nationality, number, points, position, surname, wins}) => {
     const driverElement = `
       <div class="content__driver driver">
@@ -47,10 +72,7 @@ drawDriversTable = (driversArray) => {
       </div>`
     
       contentStandingsEl.innerHTML += driverElement
-  })
-  
-
-  
+  })  
 }
 
 setContent = (data) => {  
@@ -62,7 +84,7 @@ setContent = (data) => {
   contentInfoEl.innerHTML = ""
 
   contentInfoNamesArray.map(name => setContentInfo(data,name))
-  
+
   driversStandingsArray.map(({Constructors, Driver, points, position, wins }) => {
     const {givenName, familyName, nationality, permanentNumber} = Driver
     const constructorsArray = Constructors.map(({name}) => name)
@@ -87,11 +109,13 @@ setContent = (data) => {
   drawDriversTable(driversArray)
 }
 
-
-
-
-fetchApi('/current/driverStandings.json')
+const getDrivers = () => {
+  fetchApi('/current/driverStandings.json')
   .then(data => {
     if(!data) return;
     setContent(data.MRData.StandingsTable.StandingsLists[0])
   })
+}
+
+getDrivers()
+getYears()
