@@ -32,31 +32,25 @@ setContentInfo = (data, name) => {
 }
 
 drawDriversTable = (driversArray) => {
-  // console.log(Driver)
-  // console.log(Constructors)
-  console.log(driversArray)
   
- 
-  
-  // const constructorsArray = Constructors.map(constructor =>{
+  driversArray.map(({constructors, id, name, nationality, number, points, position, surname, wins}) => {
+    const driverElement = `
+      <div class="content__driver driver">
+      <div className="driver__position">${position}</div>
+      <div className="driver__name">${name}</div>
+      <div className="driver__surname">${surname}</div>
+      <div className="driver__number">${number}</div>
+      <div className="driver__nationality">${nationality}</div>
+      <div className="driver__constructors">${constructors}</div>
+      <div className="driver__points">${points}</div>
+      <div className="drivers__wins">${wins}</div>
+      </div>`
     
-  // })
-
+      contentStandingsEl.innerHTML += driverElement
+  })
   
 
-  // const driverElement = `
-  // <div class="content__driver driver">
-  //   <div className="driver__position">${position}</div>
-  //   <div className="driver__name">${givenName}</div>
-  //   <div className="driver__number">${permanentNumber}</div>
-  //   <div className="driver__surname">${familyName}</div>
-  //   <div className="driver__nationality">${nationality}</div>
-  //   <div className="driver__constructors">${constructors}</div>
-  //   <div className="driver__points">${points}</div>
-  //   <div className="drivers__wins">${wins}</div>
-  // </div>`
-
-  // contentStandingsEl.innerHTML += driverElement
+  
 }
 
 setContent = (data) => {  
@@ -64,9 +58,11 @@ setContent = (data) => {
   let driversArray = []
   let id= 0;
 
+  contentStandingsEl.innerHTML= ""
   contentInfoEl.innerHTML = ""
-  contentInfoNamesArray.map(name => setContentInfo(data,name))
 
+  contentInfoNamesArray.map(name => setContentInfo(data,name))
+  
   driversStandingsArray.map(({Constructors, Driver, points, position, wins }) => {
     const {givenName, familyName, nationality, permanentNumber} = Driver
     const constructorsArray = Constructors.map(({name}) => name)
