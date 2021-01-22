@@ -67,13 +67,11 @@ setContent = (data) => {
   contentInfoEl.innerHTML = ""
   contentInfoNamesArray.map(name => setContentInfo(data,name))
 
-  // console.log(driversStandingsArray[0])
-
-  
   driversStandingsArray.map(({Constructors, Driver, points, position, wins }) => {
     const {givenName, familyName, nationality, permanentNumber} = Driver
     const constructorsArray = Constructors.map(({name}) => name)
-    console.log(constructorsArray)    
+    const constructors = constructorsArray.join(', ')
+ 
     const driver = {
         id,
         position,
@@ -83,7 +81,7 @@ setContent = (data) => {
         nationality,
         points,
         wins,
-        constructorsArray
+        constructors
       }
 
     id++
