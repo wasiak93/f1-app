@@ -23,17 +23,11 @@ const fetchApi = (endpoint) => {
 }
 
 
-// buttons
-const chooseYear = (year) => {
-  console.log(year)
-}
-
+// buttons section
 const drawButtonYear = (year) => {
-  // const seasonsArray = seasons.map(({season}) => season)
-
   const button = document.createElement('button')
   button.innerHTML= year
-  button.addEventListener('click', () =>chooseYear(year) )
+  button.addEventListener('click', () =>getDrivers(year) )
   
   buttonWrapperEl.appendChild(button)
 }
@@ -53,19 +47,9 @@ const getYears = () => {
     
   })
 }
+// end buttons section
 
-// buttonEl.addEventListener("click", (e)=> {
-//   const year = e.target.getAttribute('data-key')
-
-//   {fetchApi(`/${year}/driverStandings.json`)
-//   .then(data => {
-//     if(!data) return;
-//     setContent(data.MRData.StandingsTable.StandingsLists[0])
-//   })}
-// })
-
-
-// content
+// content section
 setContentInfo = (data, name) => {
   contentInfoEl.innerHTML += `
   <div class="content__${name}-wrapper">
@@ -127,13 +111,20 @@ setContent = (data) => {
   drawDriversTable(driversArray)
 }
 
-const getDrivers = () => {
-  fetchApi('/current/driverStandings.json')
+const getDrivers = (year) => {
+  fetchApi(`/${year}/driverStandings.json`)
   .then(data => {
     if(!data) return;
     setContent(data.MRData.StandingsTable.StandingsLists[0])
   })
 }
+// end content section
 
-getDrivers()
-getYears()
+
+// start App
+const getStartData = () => {
+  getDrivers('current')
+  getYears()
+}
+
+window.addEventListener('DOMContentLoaded', getStartData())
