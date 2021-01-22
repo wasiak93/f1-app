@@ -2,7 +2,7 @@ const api = 'http://ergast.com/api/f1'
 const contentInfoEl = document.querySelector('.content__info')
 const contentStandingsEl = document.querySelector('.content__standings')
 const contentInfoNamesArray = ['season', 'round']
-const menuEl = document.querySelector('.menu')
+const buttonWrapperEl = document.querySelector('.app__buttons-wrapper')
 
 const err = (er) => {
   console.log(`dupa ${er}`)
@@ -23,7 +23,21 @@ const fetchApi = (endpoint) => {
 }
 
 
-// menu
+// buttons
+const chooseYear = (year) => {
+  console.log(year)
+}
+
+const drawButtonYear = (year) => {
+  // const seasonsArray = seasons.map(({season}) => season)
+
+  const button = document.createElement('button')
+  button.innerHTML= year
+  button.addEventListener('click', () =>chooseYear(year) )
+  
+  buttonWrapperEl.appendChild(button)
+}
+
 const getYears = () => {
   const actualYear = new Date().getFullYear()
   const firstYear = 1950
@@ -32,7 +46,11 @@ const getYears = () => {
   fetchApi(`/seasons.json?limit=${limit}`)
   .then(data => {
     if(!data) return;
-    console.log(data)
+    
+    let seasons = data.MRData.SeasonTable.Seasons.map(({season}) => season)
+    seasons = [...seasons, "current"]      
+    seasons.map(season => drawButtonYear(season))
+    
   })
 }
 
