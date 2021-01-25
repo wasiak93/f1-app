@@ -1,0 +1,17 @@
+.content__info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 300px;
+  margin-bottom: $main-sapcing;
+}
+
+.content__info {
+  @include flex-center;
+  font-size: 1.2rem;
+}
+
+.content__text {
+  margin-right: 5px;
+  text-transform: uppercase;
+}

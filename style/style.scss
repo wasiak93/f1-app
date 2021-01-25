@@ -1,8 +1,12 @@
 @import './reset';
 @import './variables';
 @import './mixins';
+@import './typography';
 @import './body';
 @import './app';
-@import './typography';
-@import './header';
-@import './driver';
+@import './title/title';
+@import './content/info';
+@import './menu/button';
+@import './menu/buttons';
+@import './content/driver';
+@import './content/_standings'

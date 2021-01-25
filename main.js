@@ -1,8 +1,8 @@
 const api = 'http://ergast.com/api/f1'
-const contentInfoEl = document.querySelector('.content__info')
+const contentInfoEl = document.querySelector('.content__info-wrapper')
 const contentStandingsEl = document.querySelector('.content__standings')
 const contentInfoNamesArray = ['season', 'round']
-const buttonWrapperEl = document.querySelector('.app__buttons-wrapper')
+const menuEl = document.querySelector('.app__menu')
 
 const err = (er) => {
   console.log(`dupa ${er}`)
@@ -26,10 +26,11 @@ const fetchApi = (endpoint) => {
 // buttons section
 const drawButtonYear = (year) => {
   const button = document.createElement('button')
+  button.classList.add('app__button')
   button.innerHTML= year
   button.addEventListener('click', () => getDrivers(year) )
   
-  buttonWrapperEl.appendChild(button)
+  menuEl.appendChild(button)
 }
 
 const getYears = () => {
@@ -52,9 +53,9 @@ const getYears = () => {
 // content section
 setContentInfo = (data, name) => {
   contentInfoEl.innerHTML += `
-  <div class="content__${name}-wrapper">
-  <p class="content__${name}-text">${name}:</p>
-  <p class="content__${name}-data">${data[name]}</p>
+  <div class="content__info">
+  <p class="content__text">${name}: </p>
+  <p class="content__data">${data[name]}</p>
   </div>`
 
 }

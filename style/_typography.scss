@@ -1,6 +1,6 @@
 html, body {
   font-size: $base-font-size;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   color: $primary-color;
   font-weight: 400;
 }
@@ -10,7 +10,6 @@ h1 {
   margin: $main-sapcing;
 }
 
-// p {
-//   margin-bottom: $main-sapcing;
-//   line-height: 1.5
-// }
+p {
+  line-height: 1.2
+}

@@ -1,0 +1,12 @@
+.app__button {
+  margin: 5px 10px;
+  font-size: 0.8rem;
+  background-color: $button-background-color;
+  color: $button-text-color;
+  border: none;
+  padding: 5px;
+
+  &:hover{
+    background-color: $button-hover-color;
+  }
+}
