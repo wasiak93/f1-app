@@ -63,14 +63,14 @@ drawDriversTable = (driversArray) => {
   driversArray.map(({constructors, id, name, nationality, number, points, position, surname, wins}) => {
     const driverElement = `
       <div class="content__driver driver">
-      <div className="driver__position">${position}</div>
-      <div className="driver__name">${name}</div>
-      <div className="driver__surname">${surname}</div>
-      <div className="driver__number">${number}</div>
-      <div className="driver__nationality">${nationality}</div>
-      <div className="driver__constructors">${constructors}</div>
-      <div className="driver__points">${points}</div>
-      <div className="drivers__wins">${wins}</div>
+      <div className="driver__position"><p className="driver__text">${position}</p></div>
+      <div className="driver__name"><p className="driver__text">${name}</p></div>
+      <div className="driver__surname"><p className="driver__text">${surname}</p></div>
+      <div className="driver__number"><p className="driver__text">${number}</p></div>
+      <div className="driver__nationality"><p className="driver__text">${nationality}</p></div>
+      <div className="driver__constructors"><p className="driver__text">${constructors}</p></div>
+      <div className="driver__points"><p className="driver__text">${points}</p></div>
+      <div className="driver__wins"><p className="driver__text">${wins}</p></div>
       </div>`
     
       contentStandingsEl.innerHTML += driverElement

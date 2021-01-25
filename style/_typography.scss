@@ -1,0 +1,14 @@
+html, body {
+  font-size: $base-font-size;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: $main-sapcing;
+}
+
+p {
+  margin-bottom: $main-sapcing;
+  line-height: 1.5
+}
