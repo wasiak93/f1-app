@@ -1,5 +1,9 @@
 .driver {
  display: grid;
- grid-template-columns: minmax(25px, 1fr) minmax(80px, 1fr) minmax(100px, 1fr) minmax(30px, 1fr) minmax(100px, 1fr) minmax(140px,1fr) minmax(40px,1fr) minmax(25px, 1fr);
-//  font-weight: bold;
+ grid-template-columns: minmax(25px, 50px) minmax(80px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(140px,1fr) minmax(40px,1fr) minmax(25px, 1fr);
+ font-weight: bold;
+
+ &>*{
+   margin-left: 5px;
+ }
 }

@@ -61,13 +61,12 @@ setContentInfo = (data, name) => {
 }
 
 drawDriversTable = (driversArray) => {  
-  driversArray.map(({constructors, id, name, nationality, number, points, position, surname, wins}) => {
+  driversArray.map(({constructors, id, name, nationality, points, position, surname, wins}) => {
     const driverElement = `
       <div class="content__driver driver">
       <div className="driver__position"><p className="driver__text">${position}</p></div>
       <div className="driver__name"><p className="driver__text">${name}</p></div>
       <div className="driver__surname"><p className="driver__text">${surname}</p></div>
-      <div className="driver__number"><p className="driver__text">${number}</p></div>
       <div className="driver__nationality"><p className="driver__text">${nationality}</p></div>
       <div className="driver__constructors"><p className="driver__text">${constructors}</p></div>
       <div className="driver__points"><p className="driver__text">${points}</p></div>
@@ -98,7 +97,6 @@ setContent = (data) => {
         position,
         name: givenName,
         surname: familyName,
-        number: permanentNumber,
         nationality,
         points,
         wins,
