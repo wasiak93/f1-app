@@ -27,7 +27,7 @@ const fetchApi = (endpoint) => {
 const drawButtonYear = (year) => {
   const button = document.createElement('button')
   button.innerHTML= year
-  button.addEventListener('click', () =>getDrivers(year) )
+  button.addEventListener('click', () => getDrivers(year) )
   
   buttonWrapperEl.appendChild(button)
 }
