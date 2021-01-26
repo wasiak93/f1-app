@@ -1,12 +1,15 @@
 .driver {
  display: grid;
- grid-template-columns: minmax(25px, 50px) minmax(80px, 2fr) minmax(100px, 2fr) minmax(100px, 2fr) minmax(140px,2fr) minmax(60px,1fr) minmax(25px, auto);
+ grid-template-columns: minmax(35px, 1fr) minmax(50px, 4fr) minmax(95px, 4fr) minmax(80px,4fr) minmax(40px,1fr);
  font-weight: bold;
 
- &>*{
-   padding-left: 5px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   border-bottom: 1px solid $primary-color;
+ &:nth-child(even){
+   background-color: $even-background-color;
  }
+
+ &__element{
+  padding: $driver-padding;
+  }
 }
+
+

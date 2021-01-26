@@ -1,5 +1,7 @@
-.content__standings{
-  overflow-x: auto;
-  max-width: $standing-max-width;
-  margin: 0 auto;
+.content__standings {
+    margin: $main-spacing auto;
+
+    @media (min-width: 800px) {
+      margin: $main-spacing;      
+    }
 }

@@ -61,17 +61,25 @@ setContentInfo = (data, name) => {
 }
 
 drawDriversTable = (driversArray) => {  
-  driversArray.map(({constructors, id, name, nationality, points, position, surname, wins}) => {
-    const driverElement = `
+ 
+
+  driversArray.map(({constructors, id, name, nationality, points, position, surname, wins, code}) => {
+    const driverElement =  `
       <div class="content__driver driver">
-      <div className="driver__position"><p className="driver__text">${position}</p></div>
-      <div className="driver__name"><p className="driver__text">${name}</p></div>
-      <div className="driver__surname"><p className="driver__text">${surname}</p></div>
-      <div className="driver__nationality"><p className="driver__text">${nationality}</p></div>
-      <div className="driver__constructors"><p className="driver__text">${constructors}</p></div>
-      <div className="driver__points"><p className="driver__text">${points}</p></div>
-      <div className="driver__wins"><p className="driver__text">${wins}</p></div>
+      <div class="driver__element"><p>${position}</p></div>
+      <div class="driver__element"><p></p>${code}</div>
+      <div class="driver__element"><p>${nationality}</p></div>
+      <div class="driver__element"><p>${constructors}</p></div>
+      <div class="driver__element"><p>${points}</p></div>
       </div>`
+      // `
+      // <div class="content__driver driver">
+      // <div class="driver__element"><p>${position}</p></div>
+      // <div class="driver__element"><p>${name} ${surname}</p></div>
+      // <div class="driver__element"><p>${nationality}</p></div>
+      // <div class="driver__element"><p>${constructors}</p></div>
+      // <div class="driver__element"><p>${points}</p></div>
+      // </div>`
     
       contentStandingsEl.innerHTML += driverElement
   })  
@@ -81,14 +89,14 @@ setContent = (data) => {
   const driversStandingsArray = data.DriverStandings
   let driversArray = []
   let id= 0;
-
+  console.log(data)
   contentStandingsEl.innerHTML= ""
   contentInfoEl.innerHTML = ""
 
   contentInfoNamesArray.map(name => setContentInfo(data,name))
 
-  driversStandingsArray.map(({Constructors, Driver, points, position, wins }) => {
-    const {givenName, familyName, nationality, permanentNumber} = Driver
+  driversStandingsArray.map(({Constructors, Driver, points, position, wins}) => {
+    const {givenName, familyName, nationality, code} = Driver
     const constructorsArray = Constructors.map(({name}) => name)
     const constructors = constructorsArray.join(', ')
  
@@ -100,7 +108,8 @@ setContent = (data) => {
         nationality,
         points,
         wins,
-        constructors
+        constructors,
+        code
       }
 
     id++
