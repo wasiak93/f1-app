@@ -1,3 +1,5 @@
-.content-standings{
+.content__standings{
   overflow-x: auto;
+  max-width: $standing-max-width;
+  margin: 0 auto;
 }
