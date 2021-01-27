@@ -60,36 +60,37 @@ setContentInfo = (data, name) => {
 
 }
 
-drawDriversTable = (driversArray) => {  
- 
+drawDriversTable = (driversArray) => { 
 
-  driversArray.map(({constructors, id, name, nationality, points, position, surname, wins, code}) => {
-    const driverElement =  `
+  const setDriver = () => {
+    const windowSize = window.innerWidth
+
+    contentStandingsEl.innerHTML = ''
+
+    driversArray.map(({constructors, id, name, nationality, points, position, surname, wins, code}) => {
+      const surnameCode = surname.slice(0,3).toUpperCase()
+      
+      const driverElement =  `
       <div class="content__driver driver">
       <div class="driver__element"><p>${position}</p></div>
-      <div class="driver__element"><p></p>${code}</div>
+      <div class="driver__element"><p></p>${windowSize < 800? surnameCode : `${name} ${surname}`}</div>
       <div class="driver__element"><p>${nationality}</p></div>
       <div class="driver__element"><p>${constructors}</p></div>
       <div class="driver__element"><p>${points}</p></div>
       </div>`
-      // `
-      // <div class="content__driver driver">
-      // <div class="driver__element"><p>${position}</p></div>
-      // <div class="driver__element"><p>${name} ${surname}</p></div>
-      // <div class="driver__element"><p>${nationality}</p></div>
-      // <div class="driver__element"><p>${constructors}</p></div>
-      // <div class="driver__element"><p>${points}</p></div>
-      // </div>`
-    
+     
       contentStandingsEl.innerHTML += driverElement
-  })  
+    })  
+  }
+
+  window.addEventListener('resize', setDriver()) 
+  setDriver()
 }
 
 setContent = (data) => {  
-  const driversStandingsArray = data.DriverStandings
-  let driversArray = []
+  const driversStandingsArray = data.DriverStandings;
+  let driversArray = [];
   let id= 0;
-  console.log(data)
   contentStandingsEl.innerHTML= ""
   contentInfoEl.innerHTML = ""
 
