@@ -2,7 +2,7 @@ const api = 'http://ergast.com/api/f1'
 const contentInfoEl = document.querySelector('.content__info-wrapper')
 const contentStandingsEl = document.querySelector('.content__standings')
 const contentInfoNamesArray = ['season', 'round']
-const menuEl = document.querySelector('.app__menu')
+const buttons = document.querySelector('.app__buttons')
 
 const err = (er) => {
   console.log(`dupa ${er}`)
@@ -30,7 +30,7 @@ const drawButtonYear = (year) => {
   button.innerHTML= year
   button.addEventListener('click', () => getDrivers(year) )
   
-  menuEl.appendChild(button)
+  buttons.appendChild(button)
 }
 
 const getYears = () => {
@@ -67,13 +67,13 @@ drawDriversTable = (driversArray) => {
 
     contentStandingsEl.innerHTML = ''
 
-    driversArray.map(({constructors, id, name, nationality, points, position, surname, wins, code}) => {
+    driversArray.map(({constructors, name, nationality, points, position, surname}) => {
       const surnameCode = surname.slice(0,3).toUpperCase()
       
       const driverElement =  `
       <div class="content__driver driver">
       <div class="driver__element"><p>${position}</p></div>
-      <div class="driver__element"><p></p>${windowSize < 800? surnameCode : `${name} ${surname}`}</div>
+      <div class="driver__element"><p></p>${windowSize < 800? (windowSize < 540? surnameCode : surname) : (`${name} ${surname}`)}</div>
       <div class="driver__element"><p>${nationality}</p></div>
       <div class="driver__element"><p>${constructors}</p></div>
       <div class="driver__element"><p>${points}</p></div>
@@ -83,7 +83,7 @@ drawDriversTable = (driversArray) => {
     })  
   }
 
-  window.addEventListener('resize', setDriver()) 
+  window.addEventListener('resize', setDriver) 
   setDriver()
 }
 
@@ -102,15 +102,12 @@ setContent = (data) => {
     const constructors = constructorsArray.join(', ')
  
     const driver = {
-        id,
         position,
         name: givenName,
         surname: familyName,
         nationality,
         points,
-        wins,
         constructors,
-        code
       }
 
     id++
