@@ -1,10 +1,10 @@
 .app__button {
-  margin: 5px 10px;
+  margin: $button-margin/2 $button-margin;
   font-size: 0.8rem;
   background-color: $button-background-color;
   color: $button-text-color;
   border: none;
-  padding: 5px;
+  padding: $button-padding;
 
   &:hover{
     background-color: $button-hover-color;

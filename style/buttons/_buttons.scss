@@ -1,6 +1,11 @@
-.app__menu {
+.app__buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: $main-spacing - $button-margin;
+
+  @media (min-width: 800px) {
+    margin: $main-spacing ($big-spacing - $button-margin);
+  }
 }

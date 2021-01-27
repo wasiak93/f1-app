@@ -3,12 +3,22 @@
  grid-template-columns: minmax(35px, 1fr) minmax(50px, 4fr) minmax(95px, 4fr) minmax(80px,4fr) minmax(40px,1fr);
  font-weight: bold;
 
+ @media (max-width: 299px) {
+  grid-template-columns: repeat(5,auto); 
+ }
+  
+
  &:nth-child(even){
    background-color: $even-background-color;
  }
 
  &__element{
-  padding: $driver-padding;
+  @media (max-width: 299px) {
+    padding-left: 0;
+    padding-right: 0;
+   }
+
+  padding: $driver-padding; 
   }
 }
 

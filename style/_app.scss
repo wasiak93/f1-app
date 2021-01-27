@@ -1,12 +1,15 @@
 .app {
-  // width: 90%;
   max-width: $max-width;
   margin: 0 auto;
-  // padding: $main-spacing;
   background-color: $background-color;
   overflow: hidden;
 
   @media (min-width: 1200px){
     padding: $big-spacing;
+    margin: $big-spacing auto;
+  }
+
+  @media (min-width: 1400px){
+    margin: $big-spacing*2 auto;
   }
 }

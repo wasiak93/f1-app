@@ -73,7 +73,7 @@ drawDriversTable = (driversArray) => {
       const driverElement =  `
       <div class="content__driver driver">
       <div class="driver__element"><p>${position}</p></div>
-      <div class="driver__element"><p></p>${windowSize < 800? (windowSize < 540? surnameCode : surname) : (`${name} ${surname}`)}</div>
+      <div class="driver__element"><p>${windowSize < 800? (windowSize < 540? surnameCode : surname) : (`${name} ${surname}`)}</p></div>
       <div class="driver__element"><p>${nationality}</p></div>
       <div class="driver__element"><p>${constructors}</p></div>
       <div class="driver__element"><p>${points}</p></div>

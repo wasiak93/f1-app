@@ -1,3 +1,7 @@
 .app__title {
   margin: $main-spacing;
+
+  @media (min-width: 800px) {
+    margin: $main-spacing $big-spacing;
+  }
 }

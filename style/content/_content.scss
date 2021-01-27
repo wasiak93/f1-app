@@ -1,0 +1,36 @@
+.content {
+
+  &__info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    margin:0  $main-spacing;
+
+    @media (min-width: 800px) {
+      margin:0  $big-spacing;
+    }
+  }
+
+  &__info {
+    @include flex-center;
+    font-size: 1.2rem;
+  }
+
+  &__text {
+    margin-right: 5px;
+    text-transform: uppercase;
+  }
+
+  &__standings {
+    margin: $main-spacing auto;
+
+    @media (min-width: 540px) {
+      margin: $main-spacing;      
+    }
+
+    @media (min-width: 800px) {
+      margin: $main-spacing $big-spacing;      
+    }
+  }
+}
